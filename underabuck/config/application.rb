@@ -17,3 +17,7 @@ module Underabuck
     # the framework and any gems in your application.
   end
 end
+
+def fb
+  FactoryBot
+end
