@@ -1,0 +1,8 @@
+promostandards:
+  pcna:
+    id: UNDERABUCK
+    password: TBD
+    products:
+      wsdl: https://psproductdata100-stg.pcna.online/psProductData.svc?singleWsdl
+      version: 1.0.0
+      function: get_product_sellable

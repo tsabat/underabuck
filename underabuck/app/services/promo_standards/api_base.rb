@@ -18,7 +18,7 @@ module PromoStandards
         ns('password') => @password
       }.merge!(merged_message_args(message_args))
 
-      client.call(function) do
+      client.call(function.to_sym) do
         message(final_message_args)
       end
     end
@@ -36,7 +36,7 @@ module PromoStandards
     end
 
     def client
-      Savon.client(args) do
+      Savon.client(@args) do
         convert_request_keys_to :lower_camelcase
         namespaces 'xmlns:shar' => 'http://www.promostandards.org/WSDL/ProductDataService/1.0.0/SharedObjects/'
       end
