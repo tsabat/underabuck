@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_03_223102) do
+ActiveRecord::Schema.define(version: 2018_05_03_232701) do
+
+  create_table "sellables", force: :cascade do |t|
+    t.integer "vendor_id"
+    t.string "product_id"
+    t.string "part_id"
+    t.integer "import_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "vendors", force: :cascade do |t|
     t.string "name"
