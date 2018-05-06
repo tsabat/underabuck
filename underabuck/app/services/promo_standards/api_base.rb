@@ -25,6 +25,7 @@ module PromoStandards
 
     def merged_message_args(message_args)
       message_args.each_with_object({}) do |vals, obj|
+        ap vals
         obj[ns(vals[0])] = vals[1]
       end
     end
@@ -32,7 +33,7 @@ module PromoStandards
     private
 
     def ns(key)
-      "shar:#{key}"
+      "ins0:#{key}"
     end
 
     def client

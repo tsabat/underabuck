@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :vendor do
-    name "MyString"
+    name 'pcna'
   end
 end

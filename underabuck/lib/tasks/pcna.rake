@@ -1,12 +1,16 @@
 namespace :pcna do
   task sellable: :environment do
-    ap PromoStandards::ApiBase.new(
-      id: Settings.promostandards.pcna.id,
-      password: Settings.promostandards.pcna.password,
-      wsdl_path: Settings.promostandards.pcna.products.wsdl,
-      ws_version: Settings.promostandards.pcna.products.version
-    ).call(
-      function: Settings.promostandards.pcna.products.function
-    ).body[:get_product_sellable_response][:product_sellable_array][:product_sellable][0..2]
+    vendor = Vendor.new(name: 'pcna')
+    api_result = PromoStandards::ProductSellable.new.initial_import(vendor: vendor)
+  end
+
+  task product: :environment do
+    vendor = Vendor.new(name: 'pcna')
+    ap PromoStandards::Product.new.call(vendor: vendor, product_id: 'HL-104', part_id: 'HL-104GR')
+  end
+
+  task available_charges: :environment do
+    vendor = Vendor.new(name: 'pcna')
+    ap PromoStandards::AvailableCharges.new.call(vendor: vendor, product_id: 'HL-104')
   end
 end
