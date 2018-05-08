@@ -1,0 +1,2 @@
+class AvailableCharge < ApplicationRecord
+end

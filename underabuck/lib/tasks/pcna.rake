@@ -11,6 +11,8 @@ namespace :pcna do
 
   task available_charges: :environment do
     vendor = Vendor.new(name: 'pcna')
-    ap PromoStandards::AvailableCharges.new.call(vendor: vendor, product_id: 'HL-104')
+    rslt = PromoStandards::AvailableCharges.new.call(vendor: vendor, product_id: 'HL-104')
+    # IO.write('/tmp/rslt', rslt)
+    ap rslt
   end
 end

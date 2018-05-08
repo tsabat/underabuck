@@ -4,7 +4,7 @@ module PromoStandards
       @product_id = product_id
       @vendor = vendor
 
-      call_api
+      store_results
     end
 
     private
@@ -16,7 +16,7 @@ module PromoStandards
         password: Settings.promostandards[vendor_name].password,
         wsdl_path: Settings.promostandards[vendor_name].product_pricing.wsdl,
         ws_version: Settings.promostandards[vendor_name].product_pricing.version,
-        args: { log: true }
+        args: { log: false }
       ).call(
         function: Settings.promostandards[vendor_name].product_pricing.function,
         message_args: message_args
@@ -33,12 +33,24 @@ module PromoStandards
 
     def api_objects
       call_api.body[
-        :get_product_sellable_response
+        :get_available_charges_response
       ][
-        :product_sellable_array
+        :available_charges_array
       ][
-        :product_sellable
+        :available_charges
       ]
+    end
+
+    def store_results
+      results = api_objects.each_with_object([]) do |result, obj|
+        obj << AvailableCharge.new(
+          vendor_id: @vendor.id,
+          charge_id: result[:charge_id],
+          charge_name: result[:charge_name],
+          charge_type: result[:charge_type]
+        )
+      end
+      AvailableCharge.import(results)
     end
   end
 end

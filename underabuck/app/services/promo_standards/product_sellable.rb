@@ -25,10 +25,11 @@ module PromoStandards
       @api_results = PromoStandards::ApiBase.new(
         id: Settings.promostandards[vendor_name].id,
         password: Settings.promostandards[vendor_name].password,
-        wsdl_path: Settings.promostandards[vendor_name].products.wsdl,
-        ws_version: Settings.promostandards[vendor_name].products.version
+        wsdl_path: Settings.promostandards[vendor_name].product_sellable.wsdl,
+        ws_version: Settings.promostandards[vendor_name].product_sellable.version,
+        args: { log: false }
       ).call(
-        function: Settings.promostandards[vendor_name].products.function
+        function: Settings.promostandards[vendor_name].product_sellable.function
       )
     end
 
