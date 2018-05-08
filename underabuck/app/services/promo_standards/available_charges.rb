@@ -1,5 +1,6 @@
 module PromoStandards
   class AvailableCharges
+    include ApiMixin
     def call(vendor:, product_id:)
       @product_id = product_id
       @vendor = vendor
@@ -9,21 +10,7 @@ module PromoStandards
 
     private
 
-    def call_api
-      vendor_name = @vendor.name
-      @api_results = PromoStandards::ApiBase.new(
-        id: Settings.promostandards[vendor_name].id,
-        password: Settings.promostandards[vendor_name].password,
-        wsdl_path: Settings.promostandards[vendor_name].product_pricing.wsdl,
-        ws_version: Settings.promostandards[vendor_name].product_pricing.version,
-        args: { log: false }
-      ).call(
-        function: Settings.promostandards[vendor_name].product_pricing.function,
-        message_args: message_args
-      )
-    end
-
-    def message_args
+    def api_args
       {
         'productId' => @product_id,
         'localizationCountry' => 'US',
@@ -31,8 +18,12 @@ module PromoStandards
       }
     end
 
+    def api_name
+      'available_charges'
+    end
+
     def api_objects
-      call_api.body[
+      call_api[
         :get_available_charges_response
       ][
         :available_charges_array

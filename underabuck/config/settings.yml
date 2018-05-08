@@ -1,0 +1,22 @@
+promostandards:
+  pcna:
+    id: UNDERABUCK
+    code: pcna
+    name: pcna
+    password: TBD
+    endpoint: 
+    product_sellable:
+      endpoint: TBD
+      wsdl: 'psProductData.svc?singleWsdl'
+      version: 1.0.0
+      function: get_product_sellable
+    product:
+      endpoint: TBD
+      wsdl: psProductData.svc?singleWsdl
+      version: 1.0.0
+      function: :get_product
+    available_charges:
+      endpiont: TBD
+      wsdl: 'psPriceConfig.svc?singleWsdl'
+      version: 1.0.0
+      function: get_available_charges

@@ -16,13 +16,13 @@ describe PromoStandards::AvailableCharges do
   end
 
   def body
-    Struct.new(:body).new(
+    {
       get_available_charges_response: {
         available_charges_array: {
           available_charges: available_charges_result
         }
       }
-    )
+    }
   end
 
   it 'saves data' do
