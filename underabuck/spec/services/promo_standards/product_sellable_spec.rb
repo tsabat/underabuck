@@ -25,7 +25,7 @@ describe PromoStandards::ProductSellable do
 
   describe 'initial import' do
     it 'stores data' do
-      allow_any_instance_of(PromoStandards::ProductSellable).to receive(:call_api) { body }
+      allow_any_instance_of(PromoStandards::ApiClient).to receive(:call) { body }
       vendor = fb.create(:vendor)
       service.new.initial_import(vendor: vendor)
       expect(Sellable.count).to eq(2)
@@ -33,7 +33,7 @@ describe PromoStandards::ProductSellable do
     end
 
     it 'fails if non-empty table' do
-      allow_any_instance_of(PromoStandards::ProductSellable).to receive(:call_api) { body }
+      allow_any_instance_of(PromoStandards::ApiClient).to receive(:call) { body }
       fb.create(:sellable)
       vendor = fb.create(:vendor)
 
@@ -47,7 +47,7 @@ describe PromoStandards::ProductSellable do
 
   describe 'import' do
     it 'stores data' do
-      allow_any_instance_of(PromoStandards::ProductSellable).to receive(:call_api) { body }
+      allow_any_instance_of(PromoStandards::ApiClient).to receive(:call) { body }
       vendor = fb.create(:vendor)
       # an import that happened in the past
       fb.create(:sellable, vendor_id: vendor.id, import_id: 1)

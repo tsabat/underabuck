@@ -1,5 +1,6 @@
 module PromoStandards
   class ProductSellable
+    include ApiMixin
     def import(vendor:)
       @vendor = vendor
 
@@ -20,17 +21,8 @@ module PromoStandards
       raise(ArgumentError, "You already have sellables for #{@vendor.name}.")
     end
 
-    def call_api
-      vendor_name = @vendor.name
-      @api_results = PromoStandards::ApiBase.new(
-        id: Settings.promostandards[vendor_name].id,
-        password: Settings.promostandards[vendor_name].password,
-        wsdl_path: Settings.promostandards[vendor_name].product_sellable.wsdl,
-        ws_version: Settings.promostandards[vendor_name].product_sellable.version,
-        args: { log: false }
-      ).call(
-        function: Settings.promostandards[vendor_name].product_sellable.function
-      )
+    def api_name
+      'product_sellable'
     end
 
     def api_objects
