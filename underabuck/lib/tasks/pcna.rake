@@ -15,4 +15,10 @@ namespace :pcna do
     # IO.write('/tmp/rslt', rslt)
     ap rslt
   end
+
+  task fob_points: :environment do
+    vendor = Vendor.new(name: 'pcna')
+    rslt = PromoStandards::FobPoints.new.call(vendor: vendor, product_id: 'HL-104')
+    ap rslt
+  end
 end

@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_08_003914) do
+ActiveRecord::Schema.define(version: 2018_05_09_192802) do
 
   create_table "available_charges", force: :cascade do |t|
+    t.integer "product_id"
     t.integer "vendor_id"
     t.integer "charge_id"
     t.string "charge_type"
     t.string "charge_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fob_points", force: :cascade do |t|
+    t.integer "vendor_id"
+    t.integer "product_id"
+    t.string "fob_id"
+    t.string "fob_city"
+    t.string "fob_state"
+    t.string "fob_postal_code"
+    t.string "fob_country"
+    t.string "currency_supported"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,2 @@
+class FobPoint < ApplicationRecord
+end

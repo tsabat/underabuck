@@ -20,3 +20,8 @@ promostandards:
       wsdl: 'psPriceConfig.svc?singleWsdl'
       version: 1.0.0
       function: get_available_charges
+    fob_points:
+      endpiont: TBD
+      wsdl: 'psPriceConfig.svc?singleWsdl'
+      version: 1.0.0
+      function: get_fob_points

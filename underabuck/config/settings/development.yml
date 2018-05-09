@@ -6,4 +6,6 @@ promostandards:
       endpoint: https://psproductdata100-stg.pcna.online
     available_charges:
       endpoint: https://pspriceconfig100-stg.pcna.online
+    fob_points:
+      endpoint: https://pspriceconfig100-stg.pcna.online
 
