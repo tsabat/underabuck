@@ -8,4 +8,5 @@ promostandards:
       endpoint: https://pspriceconfig100-stg.pcna.online
     fob_points:
       endpoint: https://pspriceconfig100-stg.pcna.online
-
+    configuration_and_pricing:
+      endpoint: https://pspriceconfig100-stg.pcna.online

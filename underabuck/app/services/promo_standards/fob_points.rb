@@ -13,14 +13,14 @@ module PromoStandards
 
     def api_args
       {
-        "productId" => @product_id,
-        "localizationCountry" => "US",
-        "localizationLanguage" => "EN",
+        'productId' => @product_id,
+        'localizationCountry' => 'US',
+        'localizationLanguage' => 'EN'
       }
     end
 
     def api_name
-      "fob_points"
+      'fob_points'
     end
 
     def api_objects

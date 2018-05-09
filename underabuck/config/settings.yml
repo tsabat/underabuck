@@ -25,3 +25,8 @@ promostandards:
       wsdl: 'psPriceConfig.svc?singleWsdl'
       version: 1.0.0
       function: get_fob_points
+    configuration_and_pricing:
+      endpiont: TBD
+      wsdl: 'psPriceConfig.svc?singleWsdl'
+      version: 1.0.0
+      function: get_configuration_and_pricing
