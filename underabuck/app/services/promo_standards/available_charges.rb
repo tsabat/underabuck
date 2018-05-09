@@ -23,12 +23,12 @@ module PromoStandards
     end
 
     def api_objects
-      call_api[
+      call_api.body[
         :get_available_charges_response
       ][
-        :available_charges_array
+        :available_charge_array
       ][
-        :available_charges
+        :available_charge
       ]
     end
 

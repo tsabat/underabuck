@@ -16,17 +16,17 @@ describe PromoStandards::AvailableCharges do
   end
 
   def body
-    {
+    Struct.new(:body).new(
       get_available_charges_response: {
-        available_charges_array: {
-          available_charges: available_charges_result
+        available_charge_array: {
+          available_charge: available_charges_result
         }
       }
-    }
+    )
   end
 
   it 'saves data' do
-    allow_any_instance_of(PromoStandards::AvailableCharges).to receive(:call_api) { body }
+    allow_any_instance_of(PromoStandards::ApiClient).to receive(:call) { body }
     vendor = fb.create(:vendor)
     service.new.call(vendor: vendor, product_id: 'fake')
     expect(AvailableCharge.count).to eq(2)

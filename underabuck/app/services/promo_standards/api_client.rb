@@ -16,9 +16,7 @@ module PromoStandards
     private
 
     def client
-      Savon.client(api_args.savon_client_args) do
-        convert_request_keys_to :lower_camelcase
-      end
+      Savon.client(api_args.savon_client_args)
     end
   end
 end
